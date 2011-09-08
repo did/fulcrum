@@ -205,42 +205,42 @@ span.estimate {
 }
 
 span.estimate_1 {
-  @include background(linear-gradient(bottom, 
+  @include background(linear-gradient(bottom,
       $orange 12.5%,
       white 12.5%));
 }
 span.estimate_2 {
-  @include background(linear-gradient(bottom, 
+  @include background(linear-gradient(bottom,
       $orange 25%,
       white 25%));
 }
 span.estimate_3 {
-  @include background(linear-gradient(bottom, 
+  @include background(linear-gradient(bottom,
       $orange 37.5%,
       white 37.5%));
 }
 span.estimate_4 {
-  @include background(linear-gradient(bottom, 
+  @include background(linear-gradient(bottom,
       $orange 50%,
       white 50%));
 }
 span.estimate_5 {
-  @include background(linear-gradient(bottom, 
+  @include background(linear-gradient(bottom,
       $orange 62.5%,
       white 62.5%));
 }
 span.estimate_6 {
-  @include background(linear-gradient(bottom, 
+  @include background(linear-gradient(bottom,
       $orange 75%,
       white 75%));
 }
 span.estimate_7 {
-  @include background(linear-gradient(bottom, 
+  @include background(linear-gradient(bottom,
       $orange 87.5%,
       white 87.5%));
 }
 span.estimate_8 {
-  @include background(linear-gradient(bottom, 
+  @include background(linear-gradient(bottom,
       $orange 100%,
       white 100%));
 }
@@ -329,14 +329,20 @@ ul#projects li {
   border-top: 1px solid $aluminium-2;
   margin: 10px 0;
   padding: 10px;
+
+  h2 {
+    display: inline;
+  }
+
+  .description {
+    margin-top: 10px;
+  }
 }
 ul#projects li:hover {
   @include background(linear-gradient(top, $aluminium-2, $aluminium-3));
 }
 
-ul#projects li h2 {
-  display: inline;
-}
+
 
 div.project_options {
   float: right;

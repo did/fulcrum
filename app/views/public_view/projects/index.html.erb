@@ -1,0 +1,25 @@
+<% content_for :title_bar do %>
+  <h1>Listing projects</h1>
+<% end %>
+
+<ul id="projects">
+  <% @projects.each do |project| %>
+    <li>
+      <h2><%= link_to project.name, public_view_project_url(project) %></h2>
+      Started at:
+      <%= project.start_date %>
+
+      <br />
+
+      <% unless project.description.empty? %>
+        <div class="description">
+          <%= project.description%>
+        </div>
+      <% end %>
+
+      <p>
+        The iteration starts on <%= Date::DAYNAMES[project.iteration_start_day].pluralize %> with length of <%= project.iteration_length %> week(s)
+      </p>
+    </li>
+  <% end %>
+</ul>

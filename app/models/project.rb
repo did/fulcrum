@@ -33,6 +33,8 @@ class Project < ActiveRecord::Base
   has_many :stories,    :dependent => :destroy
   has_many :changesets, :dependent => :destroy
 
+  scope :with_public_view, where(:public_view => true)
+
   def to_s
     name
   end

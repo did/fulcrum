@@ -23,6 +23,21 @@ Fulcrum::Application.routes.draw do
     end
   end
 
+  namespace :public_view do
+    root :to => 'projects#index'
+
+    resources :projects do
+      resources :changesets, :only => [:index]
+      resources :stories, :only => [:index, :show] do
+        collection do
+          get :done
+          get :in_progress
+          get :backlog
+        end
+      end
+    end
+  end
+
   devise_for :users, :controllers => { :confirmations => "confirmations" }
 
   # The priority is based upon order of creation:

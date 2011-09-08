@@ -1,6 +1,8 @@
 var Project = Backbone.Model.extend({
   name: 'project',
 
+  editMode: true,
+
   initialize: function(args) {
 
     this.maybeUnwrap(args);
@@ -23,7 +25,8 @@ var Project = Backbone.Model.extend({
   },
 
   url: function() {
-    return '/projects/' + this.id;
+    var prefix_url = this.editMode ? '/projects/' : '/public_view/projects/';
+    return prefix_url + this.id;
   },
 
   // This method is triggered when the last_changeset_id attribute is changed,
@@ -138,7 +141,7 @@ var Project = Backbone.Model.extend({
       // TODO Make number of iterations configurable
       var numIterations = 3;
       var iterations = this.doneIterations();
-      
+
       // Take a maximum of numIterations from the end of the array
       if (iterations.length > numIterations) {
         iterations = iterations.slice(iterations.length - numIterations);

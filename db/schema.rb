@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110706094137) do
+ActiveRecord::Schema.define(:version => 20110908212947) do
 
   create_table "changesets", :force => true do |t|
     t.integer  "story_id"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(:version => 20110706094137) do
     t.integer  "iteration_length",    :default => 1
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "public_view",         :default => false
+    t.text     "description"
   end
 
   create_table "projects_users", :id => false, :force => true do |t|

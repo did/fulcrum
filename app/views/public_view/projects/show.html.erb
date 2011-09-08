@@ -1,0 +1,66 @@
+<%= javascript_tag "var AUTH_TOKEN = '#{form_authenticity_token}';" if protect_against_forgery? %>
+<script id="story_tmpl" type="text/x-jQuery-tmpl">
+  <div class="story-icons"><img
+    src="/images/${story.story_type}.png" class="story_type" alt="${story.story_type}" title="${story.story_type}: ${story.id}">{{if story.estimated}}<span
+      class="estimate estimate_${story.estimate}">${story.estimate}</span>{{/if}}{{if $item.story.hasDetails()}}<img
+    src="/images/details.png" title="${story.description}"/>{{/if}}</div>
+  <div class="story-title">${story.title}{{if $item.story.owned_by()}}<abbr class="initials" title="${$item.story.owned_by().get("name")}">${$item.story.owned_by().get("initials")}</abbr>{{/if}}</div>
+
+</script>
+<script id="story_form" type="text/x-jQuery-tmpl"></script>
+
+<script type="text/javascript">
+$(function() {
+  Project = Project.extend({
+    editMode: false
+  });
+
+  window.Project = new Project(<%= @project.to_json().html_safe %>);
+  window.Project.users.reset(<%= @project.users.to_json.html_safe %>);
+  window.Project.current_user = null;
+  window.App = new AppView;
+  window.App.scaleToViewport();
+  $(window).resize(App.scaleToViewport);
+
+  setInterval(function() {
+    window.Project.fetch();
+  }, 5000);
+
+  <% if notice %>
+    window.App.notice({
+      title: 'Notice', text: '<%= notice %>',
+      image: '<%= image_path('dialog-information.png') %>'
+    });
+  <% end %>
+
+  <% if alert %>
+    window.App.notice({
+      title: 'Alert', text: '<%= alert %>', sticky: true,
+      image: '<%= image_path('dialog-warning.png') %>'
+    });
+  <% end %>
+});
+</script>
+
+<% content_for :title_bar do %>
+  <h1><%= @project.name %></h1>
+<% end %>
+
+<table class="stories" width="100%">
+  <thead>
+    <tr>
+      <th>Done</th>
+      <th>In Progress</th>
+      <th>Backlog</th>
+      <th>Chilly Bin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="width: 25%"><div id="done" class="storycolumn"></div></td>
+      <td style="width: 25%"><div id="in_progress" class="storycolumn"></div></td>
+      <td style="width: 25%"><div id="backlog" class="storycolumn"></div></td>
+      <td style="width: 25%"><div id="chilly_bin" class="storycolumn"></div></td>
+    </tr>
+  </tbody>
+</table>
