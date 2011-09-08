@@ -6,10 +6,8 @@
   <% @projects.each do |project| %>
     <li>
       <h2><%= link_to project.name, public_view_project_url(project) %></h2>
-      Started at:
-      <%= project.start_date %>
 
-      <br />
+      <div class="date">Started at: <%= project.start_date %></div>
 
       <% unless project.description.empty? %>
         <div class="description">
