@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Fulcrum</title>
+  <title>Agile LocomotiveCMS</title>
   <%= csrf_meta_tag %>
   <%= stylesheet_link_tag 'screen.css', 'locomotive.css', :Media => 'screen, projection' %>
   <%= javascript_include_tag 'underscore.js', 'jquery-1.4.2.min',
@@ -17,7 +17,7 @@
 
 <div id="header">
   <ul id="primary-nav">
-    <li class="root"><%= link_to "Fulcrum", public_view_root_path %></li>
+    <li class="root"><%= link_to "LocomotiveCMS", public_view_root_path %></li>
 
     <li<%= ' class="secondary"'.html_safe if @projects.present? %>>
       <%= link_to 'Projects', public_view_root_path %>

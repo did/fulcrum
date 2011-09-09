@@ -11,7 +11,7 @@
 
       <% unless project.description.empty? %>
         <div class="description">
-          <%= project.description%>
+          <%= project.description.html_safe %>
         </div>
       <% end %>
 
