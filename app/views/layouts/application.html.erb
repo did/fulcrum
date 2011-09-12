@@ -3,7 +3,7 @@
 <head>
   <title>Fulcrum</title>
   <%= csrf_meta_tag %>
-  <%= stylesheet_link_tag 'screen.css', :Media => 'screen, projection' %>
+  <%= stylesheet_link_tag 'screen.css', 'screen_changes.css', :Media => 'screen, projection' %>
   <%= javascript_include_tag 'underscore.js', 'jquery-1.4.2.min',
     'backbone.js', 'jquery-ui-1.8.11.custom.min', 'jquery.tmpl.min.js',
     'jquery.gritter.min.js', 'jquery.scrollTo-min.js', 'backbone.rails',
@@ -17,7 +17,7 @@
 
 <div id="header">
   <ul id="primary-nav">
-    <li class="root"><%= link_to "Fulcrum", root_path %></li>
+    <li class="root"><%= link_to "Fulcrum", projects_path %></li>
     <% if current_user %>
       <li<%= ' class="secondary"'.html_safe if current_user.projects.present? %>>
         <%= link_to 'Projects', root_path %>
@@ -33,7 +33,6 @@
       <li><%= link_to 'Log out', destroy_user_session_path %></li>
     <% else %>
       <li><%= link_to 'Log in', new_user_session_path %></li>
-      <li><%= link_to 'Sign up', new_user_registration_path %></li>
     <% end %>
   </ul>
 </div>
